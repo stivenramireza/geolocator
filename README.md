@@ -17,5 +17,3 @@ By: Stiven Ramírez Arango - sramir70@eafit.edu.co
 # 4. Despliegue en AWS
 
 * [Despliegue en AWS](deploy-on-aws.md)
-
-2019-1
