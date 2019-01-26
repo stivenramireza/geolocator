@@ -11,7 +11,7 @@ mostrar sus resultados en una tabla y en Google Maps.
 
 ## 1.1 Requisitos funcionales:
 
-1. Autenticar usuarios.
+1. Registrar y autenticar usuarios.
 2. Obtener ubicación desde el dispositivo móvil y guardarlo en la base de datos.
 3. Buscar la ruta en la tabla o en Google Maps.
 4. Borrar la ruta de la tabla por Id.
@@ -55,7 +55,7 @@ mostrar sus resultados en una tabla y en Google Maps.
 
 ## 2.2 Servicios Web
 
-1. URL: http://server/usuarios/registro
+  1. URL: http://server/usuarios/registro
 
       Método: POST
       URI: /registro
@@ -63,13 +63,13 @@ mostrar sus resultados en una tabla y en Google Maps.
       Datos de entrada:
       nombreCliente, nombreUsuario, contrasenaUsuario, emailUsuario, fechaRegistroUsuario
 
-2. URL: http://server/usuarios/login
+  2. URL: http://server/usuarios/login
 
       Método: GET
       URI: /login
       Descripción: Autenticación de usuarios.
 
-3. URL: http://server/usuarios/localizacion
+  3. URL: http://server/usuarios/localizacion
 
       Método: POST
       URI:
@@ -77,19 +77,19 @@ mostrar sus resultados en una tabla y en Google Maps.
       Datos de entrada:
       nombreUsuario, latitud, longitud, fecha
 
-4. URL: http://server/rutas
+  4. URL: http://server/rutas
 
       Método: GET
       URI: /findbyUsername?nombreUsuario=val
       Descripción: Realiza la búsqueda de las ubicaciones del usuario y las muestra en Google Maps.
 
-5. URL: http://server/rutas
+  5. URL: http://server/rutas
 
       Método: GET
       URI: /delRutas?nombreUsuario=val
       Descripción: Borra todas las rutas del usuario seleccionado almacenadas en la base de datos.
 
-6. URL: http://server/rutas
+  6. URL: http://server/rutas
 
       Método: DELETE
       URI: /delRutas/nombreUsuario
