@@ -1,4 +1,4 @@
-# Geolocator
+# Proyecto 1 - Geolocator
 
 By: Stiven Ramírez Arango - sramir70@eafit.edu.co
 
