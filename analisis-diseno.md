@@ -1,78 +1,96 @@
-# NodeJS articulosEM
+# Geolocator
 
-By: Edwin Montoya Munera - emontoya@eafit.edu.co
+By: Stiven Ramírez Arango - sramir70@eafit.edu.co
 
 # Descripción de aplicación
 
-Aplicación web que permite gestionar Articulos, un CRUD básico de (title, url y description) por Artículo.
-
-Ejemplo de clase, a modo de tutorial, que cubre:
-
-* Aplicación del patron MVC a una aplicación Web
-* Uso de un framework backend moderno -> NodeJS
-* Configuración de ambientes: Desarrollo, Pruebas y Producción.
+Aplicación web de geolocalización que permite guardar la ubicación GPS desde el dispositivo móvil y
+mostrar sus resultados en una tabla y en Google Maps.
 
 # 1. Análisis
 
 ## 1.1 Requisitos funcionales:
 
-1. Crear Articulo.
-2. Buscar articulo por parte del titulo
-3. Borrar articulo por Id de articulo
-4. Listar todos los articulos de la base de datos en la página home o index
+1. Autenticar usuarios.
+2. Obtener ubicación desde el dispositivo móvil y guardarlo en la base de datos.
+3. Buscar la ruta en la tabla o en Google Maps.
+4. Borrar la ruta de la tabla por Id.
+5. Listar todas las rutas almacenadas en la pestaña de "Rutas" en tiempo real.
 
 ## 1.2 Definición de tecnología de desarrollo y despliegue para la aplicación:
 
-* Lenguaje de Programación: Javascript
-* Framework web backend: NodeJS - Express
-* Framework web frontend: no se usa - se utilizará Templates HTML para Vista (V)
-* Base de datos: MongoDB
+* Lenguajes de Programación: Javascript, HTML y CSS
+* Framework Web Front-end: Bootstrap
+* Framework Web Back-end: NodeJS - Express
+* Base de Datos: MongoDB
 * Web App Server: NodeJS
-* Web Server: NGINX y Apache Web Server
+* Web Server: NGINX
 
-# 2. Desarrollo
+# 2. Diseño:
 
-Se generó la base, con Yeoman:
+## 2.1 Modelo de datos:
 
-$ yo express
+Usuario:
 
-(este generador, crea una app base ejemplo MVC para gestión de articulos)
+  {
+    usuarioSchema:{
+      nombreCliente: String, 
+      nombreUsuario: String, 
+      contrasenaUsuario: String, 
+      emailUsuario: String,
+      fechaRegistroUsuario: Date 
+    }
+  }
 
-# 3. Diseño:
+Localizacion:
 
-## 3.1 Modelo de datos:
-
-article:
-
-{
-    title: String,
-    url: String,
-    text: String
-}
+  {
+    localizacionSchema:{
+      nombreUsuario: String, 
+      latitud: Number, 
+      longitud: Number, 
+      fechaUbicacion: Date
+    }
+  }
 
 ## 3.2 Servicios Web
 
-/* Servicio Web: Inserta un registro de Articulo en la Base de datos
-  Método: POST
-  URI: /newarticle
-*/
+1. URL: http://server/usuarios/registro
 
-/* Servicio Web: Realiza la búsqueda en la base de datos, por campo titulo
-  Método: GET
-  URI: /findbytitle?title=val
-*/
+    Método: POST
+    URI: /registro
+    Descripción: Inserta el registro de la cuenta del usuario.
+    Datos de entrada:
+    nombreCliente, nombreUsuario, contrasenaUsuario, emailUsuario, fechaRegistroUsuario
 
-/* Servicio Web: Realiza la búsqueda en la base de datos de todos los articulos
-  Método: GET
-  URI: /articles
-*/
+2. URL: http://server/usuarios/login
 
-/* Servicio Web: Borra un Articulo de la Base de datos.
-  Método: GET
-  URI: /delarticle?id=val
- */
+    Método: GET
+    URI: /login
+    Descripción: Autenticación de usuarios.
 
- /* Servicio Web: Borra un Articulo de la Base de datos.
-   Método: DELETE
-   URI: /delarticle/id
-  */
+3. URL: http://server/usuarios/localizacion
+
+    Método: POST
+    URI:
+    Descripción: Obtiene la ubicación y almacena el registro en la base de datos.
+    Datos de entrada:
+    nombreUsuario, latitud, longitud, fecha
+
+4. URL: http://server/rutas
+
+    Método: GET
+    URI: /findbyUsername?nombreUsuario=val
+    Descripción: Realiza la búsqueda de las ubicaciones del usuario y las muestra en la tabla y en Google Maps.
+
+5. URL: http://server/rutas
+
+    Método: GET
+    URI: /delRutas?nombreUsuario=val
+    Descripción: Borra todas las rutas del usuario seleccionado almacenadas en la base de datos.
+
+6. URL: http://server/rutas
+
+    Método: DELETE
+    URI: /delRutas/nombreUsuario
+    Descripción: Borra todas las rutas del usuario seleccionado almacenadas en la base de datos.

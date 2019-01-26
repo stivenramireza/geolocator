@@ -1,6 +1,6 @@
-# NodeJS articulosEM
+# Geolocator
 
-By: Edwin Montoya Munera - emontoya@eafit.edu.co
+By: Stiven Ramírez Arango - sramir70@eafit.edu.co
 
 # Correr el código en contenedores de Docker
 
@@ -41,8 +41,8 @@ Descargar el instalador grafico oficial de [Docker](https://docs.docker.com/dock
       $ cd /tmp/
       $ mkdir apps
       $ cd apps
-      $ git clone https://github.com/st0263eafit/appwebArticulosNodejs.git
-      $ cd appwebArticulosNodejs
+      $ git clone https://github.com/stivenramireza/Geolocator.git
+      $ cd Geolocator
 
 ## Con Dockers independientes:
 
