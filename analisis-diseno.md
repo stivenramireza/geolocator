@@ -55,7 +55,7 @@ Localizacion:
 
 ## 3.2 Servicios Web
 
-1. URL: http://server/usuarios/registro
+  1. URL: http://server/usuarios/registro
 
     Método: POST
     URI: /registro

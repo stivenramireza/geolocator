@@ -121,22 +121,3 @@ comprobar la ejecución con un browser y visitar la URL:
 
     http://localhost_or_ipserver
     para ir directamente al webserver nginx.
-
-## Configuración con HAPROXY en Docker, y apps en DOCKER:
-
-Escenario: Tenemos 3 maquinas:
-
-### maq1: ej: 10.131.137.204, con docker y docker-compose instalado, y corriendo la app (nginx, appnode, mongodb).
-
-### maq2: ej: 10.131.137.183, con docker y docker-compose instalado, y corriendo la app (nginx, appnode, mongodb).
-
-utilizaremos balanceador de carda: HAPROXY en docker, en una maquina3:
-
-### maq3: ej: 10.131.137.50, con docker instalado.
-
-en maq3, se ejecuta:
-
-      $ sudo docker pull haproxy:1.8.5
-      $ sudo docker run -d --name myhaproxy -p 80:80 -v $(pwd)/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro haproxy:1.8.5
-
-en archivo de configuración [haproxy.cfg](haproxy.cfg) en la raiz de este repo.      
