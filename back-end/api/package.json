@@ -1,13 +1,13 @@
 {
-  "name": "front-end_geolocator",
+  "name": "back-end_geolocator",
   "version": "1.0.0",
-  "description": "Front-end del geolocalizador",
+  "description": "Back-end del geolocalizador",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Carlos Azaustre (http://carlosazaustre.es)",
+  "author": "Stiven Ramírez Arango",
   "license": "MIT",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
