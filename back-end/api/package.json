@@ -1,7 +1,7 @@
 {
-  "name": "api-rest",
+  "name": "front-end_geolocator",
   "version": "1.0.0",
-  "description": "Proyecto de API RESTful con Node.js y Express",
+  "description": "Front-end del geolocalizador",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
