@@ -19,7 +19,7 @@ function signUp (req, res) {
 }
 
 function signIn (req, res) {
-  User.find({ username: req.body.username }, (err, user) => {
+  User.find({ username: req.body.username , password: req.body.password}, (err, user) => {
     if (err) return res.status(500).send({ message: err })
     if (!user) return res.status(404).send({ message: 'No existe el usuario' })
 
@@ -28,6 +28,8 @@ function signIn (req, res) {
       message: 'Te has logueado correctamente',
       token: service.createToken(user)
     })
+    let nombreUsuario= user.displayName;
+    res.render('profile', {nombreUsuario:nombreUsuario});
   })
 }
 

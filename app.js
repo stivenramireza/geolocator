@@ -23,5 +23,11 @@ app.get('/signup', (req, res) => {
 app.get('/login', (req, res) => {
   res.render('login')
 })
+app.get('/profile', (req, res) => {
+  res.render('profile')
+})
+app.get('/logout', (req, res) => {
+  res.redirect('/');
+});
 
 module.exports = app
