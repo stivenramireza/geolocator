@@ -2,25 +2,26 @@
 
 const express = require('express')
 const bodyParser = require('body-parser')
-const ejs = require('express-handlebars')
 const app = express()
 const api = require('./routes')
-var path = "/home/stiven/Codes/Telematic/Projects/Geolocator/"
+const path = require('path');
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(express.static(path.join(__dirname, 'public')));
 
-// View Engine
-app.set('front-end', path.join(path, 'front-end'));
-app.engine('ejs', exphbs({defaultLayout:'layout'}));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.get("/",function(req,res){
-  res.render(path + "js/main")
-});
-
-app.use(express.static(path));
-
 app.use('/api', api)
+app.get('/', (req, res) => {
+  res.render('index')
+})
+app.get('/signup', (req, res) => {
+  res.render('signup')
+})
+app.get('/login', (req, res) => {
+  res.render('login')
+})
 
 module.exports = app
