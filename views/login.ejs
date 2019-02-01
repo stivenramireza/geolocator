@@ -16,14 +16,14 @@
             </h1>
 
             <!-- form -->
-            <form action="/profile" method="get">
+            <form action="/api/signin" method="post">
               <div class="form-group">
                 <label for="username">Nombre de Usuario</label>
-                <input type="username" name="username" class="form-control">
+                <input type="username" name="username" class="form-control" required>
               </div>
               <div class="form-group">
                 <label for="password">Contraseña</label>
-                <input type="password" name="password" class="form-control">
+                <input type="password" name="password" class="form-control" required>
               </div>
               <center>
                 <div>

@@ -11,26 +11,42 @@ function signUp (req, res) {
     password: req.body.password
   })
 
-  user.save((err) => {
-    if (err) return res.status(500).send({ message: `Error al crear el usuario: ${err}` })
-
-    return res.status(201).send({ token: service.createToken(user) })
-  })
+  user.save(function (err, newUser) {
+    if (err) {
+        console.error(err);
+        return next(err);
+    }
+    console.log('---------------> Nuevo usuario registrado: ', newUser);
+    res.status(200);
+    res.redirect(301, '/login/');
+});
+  
 }
 
 function signIn (req, res) {
-  User.find({ username: req.body.username , password: req.body.password}, (err, user) => {
-    if (err) return res.status(500).send({ message: err })
-    if (!user) return res.status(404).send({ message: 'No existe el usuario' })
+  var credentials = {
+    username: req.body.username,
+    password: req.body.password
+  };
 
-    req.user = user
-    res.status(200).send({
-      message: 'Te has logueado correctamente',
-      token: service.createToken(user)
-    })
-    let nombreUsuario= user.displayName;
-    res.render('profile', {nombreUsuario:nombreUsuario});
-  })
+  User.findOne(credentials, function (err, user) {
+    if (err) {
+        console.error(err);
+        return next(err);
+    }
+    if (user === null) {
+        console.log('------------> Usuario no registrado');
+        res.redirect('index');
+    }else {
+        console.log('------------> Usuario logueado: ', user.username);
+        //res.render('profile');
+        req.user = user
+        res.status(200).send({
+        message: 'Te has logueado correctamente',
+        token: service.createToken(user)
+      })
+    }
+  });
 }
 
 module.exports = {
