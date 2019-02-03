@@ -4,9 +4,7 @@ var fs = require('fs')
 var app = express();
 var bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
-
 let dbo;
-
 const url = 'mongodb://mongo-server:27017';
 
 app.use(express.static('views'));
@@ -25,35 +23,4 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, database) => {
 
 app.get('/', function (req, res) {
     res.sendFile(__dirname + "/views/index/index.html")
-})
-
-app.post("/singin", function (req, res) {
-    if (req.body.name == "") res.send("incorrect sing in");
-
-    dbo.collection("usuarios").insertOne({ name: req.body.name, psswd: req.body.passwd, extraInfo: [] }, function (err, resp) {
-        if (err) {
-            res.send("incorrect sing in");
-        } else {
-            res.send("correct sing in");
-        }
-
-    })
-})
-
-
-app.post('/login', function (req, res) {
-    console.log(req.body.name);
-    dbo.collection("usuarios").findOne({ name: req.body.name }, function (err, items) {
-        console.log(items);
-        if (items == null) {
-            console.log("is null")
-            res.send("incorrect login")
-        } else {
-            if (req.body.passwd == items.psswd) { 
-                res.send("correct")
-            } else {
-                res.send("incorrect login")
-            }
-        }
-    })
 })
