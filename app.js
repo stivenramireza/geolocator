@@ -1,33 +1,17 @@
 'use strict'
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const app = express()
-const api = require('./routes')
-const path = require('path');
+const express = require("express");
+const bodyParser = require('body-parser');
+const app = express();
+const api = require("./routes")
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('views'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/', api)
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-app.use('/api', api)
-app.get('/', (req, res) => {
-  res.render('index')
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + "/views/index/index.html")
 })
-app.get('/signup', (req, res) => {
-  res.render('signup')
-})
-app.get('/login', (req, res) => {
-  res.render('login')
-})
-app.get('/profile', (req, res) => {
-  res.render('profile')
-})
-app.get('/logout', (req, res) => {
-  res.redirect('/');
-});
 
 module.exports = app
