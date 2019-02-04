@@ -16,7 +16,7 @@
             </h1>
 
             <!-- form -->
-            <form id= "userForm">
+            <form>
               <div class="form-group">
                 <label for="displayName">Nombre Completo</label>
                 <input type="displayName" name="displayName" class="form-control" required>
@@ -35,14 +35,15 @@
                   </div>
               <center>
                 <div>
-              <input id="allUsers" type="submit" value="Registrar" class="btn btn-success">
+              <input onclick="signup()"type="submit" value="Registrar" class="btn btn-success">
+              <script src="/signup/signup.js"></script>
             </div>
             </center>
             </form>
 
             <hr>
             <div class="text-center">
-              <p>¿Ya tienes una cuenta? <a href="/login">Login</a></p>
+              <p>¿Ya tienes una cuenta? <a onclick="changeToLogin()">Login</a></p>
               <p>O dirígete al <a href="/">inicio</a>.</p>
             </div>
           </div>

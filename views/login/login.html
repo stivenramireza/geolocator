@@ -16,7 +16,7 @@
             </h1>
 
             <!-- form -->
-            <form action="/api/signin" method="post">
+            <form >
               <div class="form-group">
                 <label for="username">Nombre de Usuario</label>
                 <input type="username" name="username" class="form-control" required>
@@ -27,14 +27,15 @@
               </div>
               <center>
                 <div>
-              <input type="submit" value="Ingresar"class="btn btn-success">
+              <input onclick="login()" type="submit" value="Ingresar"class="btn btn-success">
+              <script src="/login/login.js"></script>
             </div>
             </center>
             </form>
 
             <hr>
             <div class="text-center">
-              <p>¿Necesitas una cuenta? <a href="/signup">Regístrate</a></p>
+              <p>¿Necesitas una cuenta? <a onclick="changeToSingup()">Regístrate</a></p>
               <p>O dirígete al <a href="/">inicio</a>.</p>
             </div>
           </div>
