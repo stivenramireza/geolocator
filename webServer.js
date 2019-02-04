@@ -21,24 +21,36 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, database) => {
     })
 });
 
-app.post('/signin', function (req, res) {
-    console.log(req.body.username);
-    dbo.collection("users").findOne({ name: req.body.username }, function (err, items) {
-        console.log(items);
-        if (items == null) {
-            console.log("Está vacío")
-            res.send("Login incorrecto")
-        } else {
-            if (req.body.password == items.password) { 
-                res.send("Login correcto")
-            } else {
-                res.send("Login incorrecto")
-            }
-        }
-    })
-})
-
 app.get('/', function (req, res) {
     res.sendFile(__dirname + "/views/index/index.html")
 })
 
+app.post("/singin", function (req, res) {
+    if (req.body.username == "") res.send("incorrect sing in");
+
+    dbo.collection("users").insertOne({ displayName: req.body.displayName,username: req.body.username, password: req.body.password, extraInfo: [] }, function (err, resp) {
+        if (err) {
+            res.send("incorrect sing in");
+        } else {
+            res.send("correct sing in");
+        }
+
+    })
+})
+
+app.post('/login', function (req, res) {
+    console.log(req.body.username);
+    dbo.collection("users").findOne({ username: req.body.username }, function (err, items) {
+        console.log(items);
+        if (items == null) {
+            console.log("is null")
+            res.send("incorrect login")
+        } else {
+            if (req.body.passwd == items.psswd) { //this should be encrypted
+                res.send("correct")
+            } else {
+                res.send("incorrect login")
+            }
+        }
+    })
+})

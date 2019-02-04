@@ -6,11 +6,12 @@ let login = function () {
     http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {
             localStorage.setItem("tokenPractica1", http.response.token);
-            window.location.replace('/profile/profile.html')
+            window.location.replace('/formGPS/formgps.html')
         }
     }
 
-    http.send(JSON.stringify({ username: document.getElementById("name").value, password: document.getElementById("password").value }));
+    http.send(JSON.stringify({ username: document.getElementById("name").value, 
+    password: document.getElementById("password").value }));
 
 }
 
