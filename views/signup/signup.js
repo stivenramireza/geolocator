@@ -5,7 +5,7 @@ let signup = function () {
     http.setRequestHeader("Content-type", "application/json");
     http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {
-            localStorage.setItem("geolocatortoken", http.response.token);
+            localStorage.setItem("tokenPractica1", http.response.token);
             window.location.replace('/profile/profile.html')
         }
         
@@ -13,10 +13,10 @@ let signup = function () {
 
 
     http.send(JSON.stringify({
-        displayName: document.getElementById("displayName").value,
-        username: document.getElementById("username").value,
-        email: document.getElementById("email").value,
-        password: document.getElementById("password").value
+        displayName: document.getElementById("displayNameSing").value,
+        username: document.getElementById("nameSing").value,
+        email: document.getElementById("emailSing").value,
+        password: document.getElementById("passwordSing").value
     }));
 
 }

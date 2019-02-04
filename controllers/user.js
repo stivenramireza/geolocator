@@ -2,8 +2,9 @@
 
 const User = require('../models/user')
 const service = require('../services')
+const bcrypt = require('bcrypt');
 
-function signUp (req, res) {
+function signup (req, res) {
   const user = new User({
     displayName: req.body.displayName,
     username: req.body.username,
@@ -18,7 +19,7 @@ function signUp (req, res) {
   })
 }
 
-function signIn (req, res) {
+function login (req, res) {
   User.findOne({ username: req.body.username }).select('username +password').exec(function (err, user) {
     if (err) return res.status(500).send({ message: err })
 
@@ -40,6 +41,6 @@ function signIn (req, res) {
 }
 
 module.exports = {
-  signUp,
-  signIn,
+  signup,
+  login,
 }

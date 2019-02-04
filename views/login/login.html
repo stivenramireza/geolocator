@@ -1,46 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Login</title>
-    <% include partials/head %>
-  </head>
-  <body class="login">
-    <div class="container">
-      <div class="col-sm-6 mx-auto">
-        <div class="card mt-5">
-          <div class="card-body">
-            <!-- messages -->
-            <h1 class="text-center">
-              <span class="fa fa-sign-in"></span> Login
-            </h1>
-
-            <!-- form -->
-            <form >
-              <div class="form-group">
-                <label for="username">Nombre de Usuario</label>
-                <input type="username" name="username" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label for="password">Contraseña</label>
-                <input type="password" name="password" class="form-control" required>
-              </div>
-              <center>
-                <div>
-              <input onclick="login()" type="submit" value="Ingresar"class="btn btn-success">
-              <script src="/login/login.js"></script>
+<head>
+<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files -->
+<!-- web font -->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+<!-- //web font -->
+</head>
+<body>
+        <!-- main -->
+        <div class="main-w3layouts wrapper">
+            <h1>Login</h1>
+            <div class="main-agileinfo">
+                <div class="agileits-top">
+                    <form >
+                        <input id="name"class="text" type="text" name="name" placeholder="Nombre de Usuario" required="">
+                        <input id="password"class="text" type="password" name="password" placeholder="Contraseña" required="">
+                        <div class="wthree-text">
+                            <div class="clear"> </div>
+                        </div>
+                        <input onclick=login() type="button" value="Ingresar" />
+                        <script src="/login/login.js"></script>
+                    </form>
+                    <p>¿Aún no estás registrado? <a href="/signup/signup.html">Crea una cuenta</a>.</p>
+                </div>
             </div>
-            </center>
-            </form>
-
-            <hr>
-            <div class="text-center">
-              <p>¿Necesitas una cuenta? <a onclick="changeToSingup()">Regístrate</a></p>
-              <p>O dirígete al <a href="/">inicio</a>.</p>
-            </div>
-          </div>
+            
         </div>
-      </div>
-    </div>
-  </body>
+        <!-- //main -->
+    </body>
 </html>
