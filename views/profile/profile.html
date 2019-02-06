@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <title>Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        #map {
+            height: 80%;
+            height: 80%;
+        }
+    </style>
+</head>
+
+<body>
+        <input onclick="startGps()" type="button" value="Start gps">
+        <input onclick="stopGps()" type="button" value="Stop gps">
+        <input onclick="launchMap()" type="button" value="Show in map">
+        <input onclick="clearMap()" type="button" value="Clear map">
+        <input onclick="deleteRoute()" type="button" value="Delete route from account">
+        <input onclick="showValues()" type="button" value="show saved values">
+        
+
+    <div id="map"></div>
+    <script src="/profile/profile.js"></script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAbI76O1IH31LG-SqZBJ1NYSpUx2dv0tI"></script>
+
+    
+
+</body>
+
+</html>
