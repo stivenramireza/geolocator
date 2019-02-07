@@ -1,22 +1,39 @@
-
-  env = process.env.NODE_ENV || 'test';
+var path = require('path'),
+    rootPath = path.normalize(__dirname + '/..'),
+    env = process.env.NODE_ENV || 'test';
 
 var config = {
   development: {
-    db: 'mongodb://mongo-server:27017/geolocator',
+    baseUrl: "/",
+    root: rootPath,
+    app: {
+      name: 'geolocator'
+    },
     port: process.env.PORT || 3000,
-    SECRET_TOKEN: "tokenGeolocator"
+    SECRET_TOKEN: "geolocatorToken",
+    db: 'mongodb://mongo-server/geolocator-development'
   },
+
   test: {
-    //    baseUrl: "/nodeArticulos/",
-    db: 'mongodb://localhost:27017/geolocator',
+    baseUrl: "/",
+    root: rootPath,
+    app: {
+      name: 'geolocator'
+    },
     port: process.env.PORT || 3000,
-    SECRET_TOKEN: "tokenGeolocator"
+    SECRET_TOKEN: "geolocatorToken",
+    db: 'mongodb://localhost/geolocator-test'
   },
+
   production: {
-    db: 'mongodb://mongo-server:27017/geolocator',
+    baseUrl: "/",
+    root: rootPath,
+    app: {
+      name: 'geolocator'
+    },
     port: process.env.PORT || 3000,
-    SECRET_TOKEN: "tokenGeolocator"
+    SECRET_TOKEN: "geolocatorToken",
+    db: 'mongodb://sramir70:*******@ds163397.mlab.com:63397/sramir70'
   }
 };
 

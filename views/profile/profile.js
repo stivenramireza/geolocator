@@ -1,29 +1,25 @@
 var flagStop = true;
 var map = null;
 var flightPath = null;
+
 let startGps = function () {
     flagStop = true;
     if (navigator.geolocation) {
         loopPos();
-
     } else {
         console.log("Geolocation is not supported by this browser.");
     }
-
-
-
 }
+
 function loopPos() {
     if (!flagStop) return;
     navigator.geolocation.getCurrentPosition(sendPos);
-    setTimeout(loopPos, 2000);
+    setTimeout(loopPos, 5000);
 }
+
 function sendPos(position) {
-
-
-    //sendPos();
     var http = new XMLHttpRequest();
-    http.open("POST", "/addInfoGps", true);
+    http.open("POST", "/location", true);
     http.setRequestHeader("Content-type", "application/json");
     http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {
@@ -39,7 +35,6 @@ function sendPos(position) {
 
 }
 
-
 function stopGps() {
     flagStop = false;
 }
@@ -48,7 +43,7 @@ function launchMap() {
     stopGps();
     var http = new XMLHttpRequest();
     http.responseType = 'json';
-    http.open("GET", "/getUserRouteGps", true);
+    http.open("GET", "/locations", true);
     http.setRequestHeader("Content-type", "application/json");
     http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {
@@ -75,7 +70,7 @@ function deleteRoute(){
     clearMap();
     var http = new XMLHttpRequest();
     http.responseType = 'json';
-    http.open("DELETE", "/deleteRouteFromAccount", true);
+    http.open("DELETE", "/location", true);
     
     http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {
@@ -87,16 +82,14 @@ function deleteRoute(){
 }
 
 function initMap(gpsInfo) {
-    
     map = new google.maps.Map(document.getElementById("map"), {
         zoom: 20,
-        center: { lat: gpsInfo[0].gpsLatitud,lng: gpsInfo[0].gpsLongitud }
+        center: { lat: gpsInfo[0].gpsLatitud,
+            lng: gpsInfo[0].gpsLongitud }
     });
-    
     var flightPlanCoordinates = [];
     for (var i = 0; i < gpsInfo.length; i++) {
         flightPlanCoordinates.push({ lat: gpsInfo[i].gpsLatitud, lng: gpsInfo[i].gpsLongitud })
-        console.log("latitude: " + gpsInfo[i].gpsLatitud + " longitud: " + gpsInfo[i].gpsLongitud)
     }
     flightPath = new google.maps.Polyline({
         path: flightPlanCoordinates,
@@ -105,17 +98,13 @@ function initMap(gpsInfo) {
         strokeOpacity: 1.0,
         strokeWeight: 2
     });
-
     flightPath.setMap(map);
-
-
 }
 
 function showValues(){
-    
     var http = new XMLHttpRequest();
     http.responseType = 'json';
-    http.open("GET", "/getUserRouteGps", true);
+    http.open("GET", "/locations", true);
     http.setRequestHeader("Content-type", "application/json");
     http.onreadystatechange = function () {
         if (http.readyState == 4 && http.status == 200) {

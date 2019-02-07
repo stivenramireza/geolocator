@@ -1,12 +1,12 @@
 const express = require('express')
-const UsertCtrl = require("../controllers/userCtrl")
+const userController = require("../controllers/user")
 const api  = express.Router()
 const auth = require('../middlewares/auth')
 
-api.post("/signup", UsertCtrl.signup)
-api.post("/addInfoGps", auth, UsertCtrl.addInfoGps)
-api.post('/login', UsertCtrl.login)
-api.get("/getUserRouteGps", auth, UsertCtrl.getExtraInfo)
-api.delete("/deleteRouteFromAccount", auth, UsertCtrl.deleteExtraInfo)
+api.post("/signup", userController.registrar)
+api.post('/login', userController.loguear)
+api.post("/location", auth, userController.agregarGPSLocation)
+api.get("/locations", auth, userController.obtenerGPSLocation)
+api.delete("/location", auth, userController.eliminarGPSLocation)
 
 module.exports = api

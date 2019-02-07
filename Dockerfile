@@ -1,8 +1,8 @@
 FROM node:9.6.1
 
 LABEL version="1.0"
-LABEL description="Web app practica1"
-LABEL maintainer="Sebastian Ospina - sospin26@eafit.edu.co"
+LABEL description="Geolocator"
+LABEL maintainer="Stiven Ramírez Arango - sramir70@eafit.edu.co"
 
 ARG PORT=3000
 ENV PORT $PORT

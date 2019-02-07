@@ -1,13 +1,13 @@
 {
-  "name": "practica1",
+  "name": "geolocator",
   "version": "1.0.0",
-  "description": "practica 1",
+  "description": "Aplicación web",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "npm ."
   },
-  "author": "sebastian ospina cabarcas",
+  "author": "Stiven Ramírez Arango",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.3",

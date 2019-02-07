@@ -4,7 +4,6 @@ var config = require('./config')
 const mongoose = require('mongoose')
 const app = require("./app")
 
-
 mongoose.connect(config.db,{ useCreateIndex: true,
                              useNewUrlParser: true } , (err, res) => {
     if (err) {

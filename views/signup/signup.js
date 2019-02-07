@@ -10,8 +10,6 @@ let signup = function () {
         }
         
     }
-
-
     http.send(JSON.stringify({
         displayName: document.getElementById("displayNameSing").value,
         username: document.getElementById("nameSing").value,
@@ -19,8 +17,4 @@ let signup = function () {
         password: document.getElementById("passwordSing").value
     }));
 
-}
-
-let changeToLogin = function () {
-    window.location.replace('/login/login.html')
 }
