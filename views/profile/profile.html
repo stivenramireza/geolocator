@@ -17,21 +17,27 @@
 </head>
 
 <body>
-        <input onclick="startGps()" type="button" value="Start gps">
-        <input onclick="stopGps()" type="button" value="Stop gps">
-        <input onclick="launchMap()" type="button" value="Show in map">
-        <input onclick="clearMap()" type="button" value="Clear map">
-        <input onclick="deleteRoute()" type="button" value="Delete route from account">
-        <input onclick="showValues()" type="button" value="show saved values">
-        
-
+    <div>
+        <center>
+        <h2>Geolocator</h2>
+    </center>
+    </div>
+    <div>
+        <center>
+        <input onclick="cerrarSesion()" type="button" value="Cerrar sesión">
+        </center>
+    </div>
     <div id="map"></div>
+    <div>
+        <center>
+        <input onclick="startGps()" type="button" value="Start">
+        <input onclick="stopGps()" type="button" value="Stop">
+        <input onclick="showValues()" type="button" value="Ver historial de rutas">
+    </center>
+    </div>
+        
     <script src="/profile/profile.js"></script>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAbI76O1IH31LG-SqZBJ1NYSpUx2dv0tI"></script>
-
-    
-
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAbI76O1IH31LG-SqZBJ1NYSpUx2dv0tI&callback=initMap"></script>
 </body>
-
 </html>

@@ -7,6 +7,5 @@ api.post("/signup", userController.registrar)
 api.post('/login', userController.loguear)
 api.post("/location", auth, userController.agregarGPSLocation)
 api.get("/locations", auth, userController.obtenerGPSLocation)
-api.delete("/location", auth, userController.eliminarGPSLocation)
 
 module.exports = api

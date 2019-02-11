@@ -9,12 +9,14 @@ let startGps = function () {
     } else {
         console.log("Geolocation is not supported by this browser.");
     }
+    
 }
 
 function loopPos() {
     if (!flagStop) return;
     navigator.geolocation.getCurrentPosition(sendPos);
     setTimeout(loopPos, 5000);
+    initMap(sendPos)
 }
 
 function sendPos(position) {
@@ -39,46 +41,11 @@ function stopGps() {
     flagStop = false;
 }
 
-function launchMap() {
-    stopGps();
-    var http = new XMLHttpRequest();
-    http.responseType = 'json';
-    http.open("GET", "/locations", true);
-    http.setRequestHeader("Content-type", "application/json");
-    http.onreadystatechange = function () {
-        if (http.readyState == 4 && http.status == 200) {
-            if(http.response.gpsInfo.length != 0){
-                initMap(http.response.gpsInfo)
-            }else{
-                console.log("empty route")
-            }
-        }
-    }
-    http.setRequestHeader("authorization", localStorage.getItem("tokenGeolocator"));
-    http.send();
-}
-
 function clearMap() {
     stopGps();
     if(flightPath != null){
         flightPath.setMap(null);
     }
-}
-
-function deleteRoute(){
-    stopGps();
-    clearMap();
-    var http = new XMLHttpRequest();
-    http.responseType = 'json';
-    http.open("DELETE", "/location", true);
-    
-    http.onreadystatechange = function () {
-        if (http.readyState == 4 && http.status == 200) {
-            console.log("result " + http.response.message);
-        }
-    }
-    http.setRequestHeader("authorization", localStorage.getItem("tokenGeolocator"));
-    http.send();
 }
 
 function initMap(gpsInfo) {
@@ -99,6 +66,9 @@ function initMap(gpsInfo) {
         strokeWeight: 2
     });
     flightPath.setMap(map);
+    map.setCenter(pos);
+    map.setZoom(18);
+    placeMarker(pos,map);
 }
 
 function showValues(){
@@ -117,4 +87,12 @@ function showValues(){
     }
     http.setRequestHeader("authorization", localStorage.getItem("tokenGeolocator"));
     http.send();
+}
+
+function placeMarker(position, map) {
+    var marker = new google.maps.Marker({
+        position: position,
+        map: map
+    });
+    map.panTo(position);
 }

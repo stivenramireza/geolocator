@@ -72,26 +72,9 @@ function obtenerGPSLocation(req, res) {
     })
 }
 
-function eliminarGPSLocation(req, res){
-    User.updateOne({username: req.username},
-        {"$set":{"gps_location":[]}
-        },function(err, user){
-        if(user == null) {
-            return res.status(500).send({
-                message: `El usuario no existe: ${err}`})
-        }
-        if(err){ return res.status(500).send({
-            message: `El usuario no existe: ${err}`})
-        }
-        res.status(200).send({
-            message: "Se eliminó la ruta de forma correcta"})
-    })
-}
-
 module.exports = {
     registrar,
     loguear,
     agregarGPSLocation,
     obtenerGPSLocation,
-    eliminarGPSLocation
 }
