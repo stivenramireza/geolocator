@@ -4,36 +4,21 @@ var path = require('path'),
 
 var config = {
   development: {
-    baseUrl: "/",
-    root: rootPath,
-    app: {
-      name: 'geolocator'
-    },
     port: process.env.PORT || 3000,
-    SECRET_TOKEN: "geolocatorToken",
-    db: 'mongodb://mongo-server:27017/geolocator-development'
+    db: process.env.MONGODB_URI || 'mongodb://mongo-server:27017/database-geolocator',
+    SECRET_TOKEN: 'tokenGeolocator'
   },
 
   test: {
-    baseUrl: "/",
-    root: rootPath,
-    app: {
-      name: 'geolocator'
-    },
     port: process.env.PORT || 3000,
-    SECRET_TOKEN: "geolocatorToken",
-    db: 'mongodb://localhost:27017/geolocator-test'
+    db: process.env.MONGODB_URI || 'mongodb://localhost:27017/database-geolocator',
+    SECRET_TOKEN: 'tokenGeolocator'
   },
 
   production: {
-    baseUrl: "/",
-    root: rootPath,
-    app: {
-      name: 'geolocator'
-    },
     port: process.env.PORT || 3000,
-    SECRET_TOKEN: "geolocatorToken",
-    db: 'mongodb://mongo-server:27017/geolocator-production'
+    db: process.env.MONGODB_URI || 'mongodb://mongo-server:27017/database-geolocator',
+    SECRET_TOKEN: 'tokenGeolocator'
   }
 };
 

@@ -11,17 +11,6 @@ mongoose.connect(config.db,{ useCreateIndex: true,
   }
   console.log('Conexión a la base de datos establecida...')
     app.listen(config.port, function () {
-        console.log(`Web app corriendo en http://localhost:${config.port}`)
+        console.log(`Web app corriendo en ${config.port}`)
     })
 });
-
-
-
-
-
-
-
-
-
-
-
