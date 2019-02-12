@@ -20,7 +20,7 @@ services:
     environment:
       NODE_ENV:
     depends_on:
-      - mongo-server      
+      - mongo-server     
   mongo-server:
     container_name: mongo-server
     image: mongo
