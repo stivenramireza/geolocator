@@ -11,7 +11,7 @@ var config = {
     },
     port: process.env.PORT || 3000,
     SECRET_TOKEN: "geolocatorToken",
-    db: 'mongodb://mongo-server/geolocator-development'
+    db: 'mongodb://mongo-server:27017/geolocator-development'
   },
 
   test: {
@@ -22,7 +22,7 @@ var config = {
     },
     port: process.env.PORT || 3000,
     SECRET_TOKEN: "geolocatorToken",
-    db: 'mongodb://localhost/geolocator-test'
+    db: 'mongodb://localhost:27017/geolocator-test'
   },
 
   production: {
@@ -33,7 +33,7 @@ var config = {
     },
     port: process.env.PORT || 3000,
     SECRET_TOKEN: "geolocatorToken",
-    db: 'mongodb://sramir70:*******@ds163397.mlab.com:63397/sramir70'
+    db: 'mongodb://mongo-server:27017/geolocator-production'
   }
 };
 

@@ -11,6 +11,18 @@
 <!-- web font -->
 <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
 <!-- //web font -->
+<style type="text/css">
+        .boton_personalizado_login{
+          text-decoration: none;
+          padding: 10px;
+          font-weight: 600;
+          font-size: 20px;
+          color: #ffffff;
+          background-color: #14c90e;
+          border-radius: 6px;
+          border: 2px solid #30c01d;
+        }
+</style>
 </head>
 <body>
         <!-- main -->
@@ -24,7 +36,11 @@
                         <div class="wthree-text">
                             <div class="clear"> </div>
                         </div>
-                        <input class="btn btn-primary btn-block btn-lg"onclick=login() type="button" value="Ingresar" />
+                        <div>
+                            <center>
+                        <input class="boton_personalizado_login" onclick=login() type="button" value="Ingresar" />
+                    </center>
+                    </div>
                         <script src="/login/login.js"></script>
                     </form>
                     <p>¿Aún no estás registrado? <a href="/signup/signup.html">Crea una cuenta</a>.</p>

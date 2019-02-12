@@ -47,10 +47,10 @@ function agregarGPSLocation(req, res) {
     var currentDate = new Date();
     User.updateOne({ username: req.username },
         { $push: { gps_location: { 
-            gpsLatitud: req.body.gpsLatitud, 
-            gpsLongitud: req.body.gpsLongitud, 
-            hora: currentDate.getHours(), 
-            fecha: Date.now() } 
+            gpsLatitud: (req.body.gpsLatitud).toFixed(4), 
+            gpsLongitud: (req.body.gpsLongitud).toFixed(4), 
+            hora: currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds(), 
+            fecha: currentDate.toDateString() } 
         } 
     },
         (err, extr) => {
@@ -72,9 +72,15 @@ function obtenerGPSLocation(req, res) {
     })
 }
 
+function cerrarSesion(req, res){
+    req.logOut();
+    res.redirect("/login/login.html");
+}
+
 module.exports = {
     registrar,
     loguear,
     agregarGPSLocation,
     obtenerGPSLocation,
+    cerrarSesion
 }
