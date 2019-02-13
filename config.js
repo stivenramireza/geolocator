@@ -5,19 +5,19 @@ var path = require('path'),
 var config = {
   development: {
     port: process.env.PORT || 3000,
-    db: process.env.MONGODB_URI || 'mongodb://mongo-server:27017/database-geolocator',
-    SECRET_TOKEN: 'tokenGeolocator'
+    db: process.env.MONGODB_URI || 'mongodb://localhost/database-geolocator',
+    SECRET_TOKEN: 'tokenGeolocator' 
   },
 
   test: {
     port: process.env.PORT || 3000,
-    db: process.env.MONGODB_URI || 'mongodb://localhost:27017/database-geolocator',
+    db: process.env.MONGODB_URI || 'mongodb://mongo-server/database-geolocator',
     SECRET_TOKEN: 'tokenGeolocator'
   },
 
   production: {
     port: process.env.PORT || 3000,
-    db: process.env.MONGODB_URI || 'mongodb://mongo-server:27017/database-geolocator',
+    db: process.env.MONGODB_URI || 'mongodb://mongo-server/database-geolocator',
     SECRET_TOKEN: 'tokenGeolocator'
   }
 };
