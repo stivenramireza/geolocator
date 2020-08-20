@@ -10,7 +10,7 @@
   "author": "Stiven Ramírez Arango",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.3",
+    "bcrypt": "^5.0.0",
     "express": "^4.16.4",
     "https": "^1.0.0",
     "jwt-simple": "^0.5.5",
